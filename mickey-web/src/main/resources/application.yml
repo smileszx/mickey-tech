@@ -1,0 +1,13 @@
+server:
+  port: 8080
+swagger:
+  enabled: true
+  title: Spring Boot中使用Swagger2构建RESTful APIS
+  description: 接口定义
+  version: 1.0.0
+  basePackage: com.mickey.tech.web
+  contact:
+    name: suzhengxiao
+    url: https://www.mioffice.cn
+    email: suzhengxiao@xiaomi.com
+  headTokenDescription: 令牌
