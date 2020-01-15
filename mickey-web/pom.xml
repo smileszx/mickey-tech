@@ -37,6 +37,11 @@
             <artifactId>common-swagger</artifactId>
             <version>${mickey.tech.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mickey.tech</groupId>
+            <artifactId>common-log</artifactId>
+            <version>${mickey.tech.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

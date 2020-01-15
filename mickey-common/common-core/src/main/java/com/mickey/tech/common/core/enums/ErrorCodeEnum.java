@@ -14,7 +14,12 @@ public enum ErrorCodeEnum {
     /**
      * 服务器异常
      */
-    SERVER_ERROR(500, "服务器异常");
+    SERVER_ERROR(500, "服务器异常"),
+
+    /**
+     * 参数不合法
+     */
+    ILLEGAL_PARAMETERS(40000, "参数不合法");
 
     private Integer code;
     private String msg;
