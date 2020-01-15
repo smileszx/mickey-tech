@@ -16,10 +16,6 @@
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
-    <properties>
-        <mickey.tech.version>1.0-SNAPSHOT</mickey.tech.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -30,17 +26,14 @@
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>common-core</artifactId>
-            <version>${mickey.tech.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>common-swagger</artifactId>
-            <version>${mickey.tech.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>common-log</artifactId>
-            <version>${mickey.tech.version}</version>
         </dependency>
     </dependencies>
 
