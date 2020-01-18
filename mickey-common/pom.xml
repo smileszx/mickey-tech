@@ -16,6 +16,5 @@
         <module>common-swagger</module>
         <module>common-core</module>
         <module>common-log</module>
-        <module>common-orm</module>
     </modules>
 </project>
