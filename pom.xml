@@ -12,6 +12,8 @@
         <module>mickey-common</module>
         <module>mickey-web</module>
         <module>mickey-orm</module>
+        <module>mickey-manager</module>
+        <module>mickey-service</module>
     </modules>
     <!-- 依赖版本控制 -->
     <properties>
