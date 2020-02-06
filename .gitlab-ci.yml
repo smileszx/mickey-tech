@@ -1,0 +1,105 @@
+#image 指定了运行的docker镜像,用以区分编译环境
+
+#**此处根据自身项目需求选择对应的镜像版本(需要开发修改)**
+image: 镜像名称
+
+stages:
+  - build
+  - release
+
+test-jar-build:
+  stage: build
+  script:
+    - rm -rf test_target && mkdir -p test_target && mvn -U clean package -Dmaven.test.skip=true -P dev
+    - cp -a mickey-web/target/mickey-web.jar test_target/mickey-tech.jar
+    - chmod +x  test_target/mickey-tech.jar
+    - cp -rf .dockerignore test_target/ && cp -rf Dockerfile test_target/
+  environment:
+    name: test
+  only:
+    - /^test-.*$/
+  except:
+    - branches
+  artifacts:
+    paths:
+      - test_target/*
+    untracked: false
+
+pre-jar-build:
+  stage: build
+  script:
+    - rm -rf pre_target && mkdir -p pre_target && mvn -U clean package -Dmaven.test.skip=true -P pre
+    - cp -a mickey-web/target/mickey-web.jar pre_target/mickey-tech.jar
+    - chmod +x ./pre_target/mickey-tech.jar \
+    - cp -rf ./.dockerignore ./pre_target && cp -rf ./Dockerfile ./pre_target
+  environment:
+    name: pre
+  only:
+    - /^pre-.*$/
+  except:
+    - branches
+  artifacts:
+    paths:
+      - pre_target/*
+    untracked: false
+
+prod-jar-build:
+  stage: build
+  script:
+    - rm -rf prod_target && mkdir -p prod_target && mvn -U clean package -Dmaven.test.skip=true -P prod
+    - cp -a mickey-web/target/mickey-web.jar prod_target/mickey-tech.jar
+    - chmod +x ./prod_target/mickey-tech.jar
+    - cp -rf ./.dockerignore ./prod_target && cp -rf ./Dockerfile ./prod_target
+  environment:
+    name: prod
+  only:
+    - /^pro-.*$/
+    - RELEASE
+  except:
+    - branches
+  artifacts:
+    paths:
+      - prod_target/*
+    untracked: false
+
+
+test-image-build:
+  stage: release
+  image: docker:dind
+  script:
+    - cd ./test_target
+    - docker login DOCKER域名 -u $HUBUSER -p $HUBPASS
+    - docker build --no-cache . -t  DOCKER域名/路径/镜像:$CI_COMMIT_TAG
+    - docker push DOCKER域名/路径/镜像:$CI_COMMIT_TAG
+  only:
+    - /^test-.*$/
+  except:
+    - branches
+
+
+pre-image-build:
+  stage: release
+  image: docker:dind
+  script:
+    - cd ./pre_target
+    - docker login DOCKER域名 -u $HUBUSER -p $HUBPASS
+    - docker build --no-cache . -t  DOCKER域名/路径/镜像:$CI_COMMIT_TAG
+    - docker push DOCKER域名/路径/镜像:$CI_COMMIT_TAG
+  only:
+    - /^pre-.*$/
+  except:
+    - branches
+
+
+prod-image-build:
+  stage: release
+  image: docker:dind
+  script:
+    - cd ./prod_target
+    - docker login DOCKER域名 -u $HUBUSER -p $HUBPASS
+    - docker build --no-cache . -t  DOCKER域名/路径/镜像:$CI_COMMIT_TAG
+    - docker push DOCKER域名/路径/镜像:$CI_COMMIT_TAG
+  only:
+    - /^pro-.*$/
+  except:
+    - branches
