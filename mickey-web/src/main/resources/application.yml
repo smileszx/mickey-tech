@@ -1,5 +1,8 @@
 server:
   port: 9999
+spring:
+  profiles:
+    active: dev
 swagger:
   enabled: true
   title: Spring Boot中使用Swagger2构建RESTful APIS
