@@ -17,7 +17,7 @@ public final class DataSourceConstant {
     /**
      * mapper文件包名
      */
-    public static final String MYBATIS_MAPPER_CLASS_PKG = "com.mi.info.groupname.demo.dal.mapper";
+    public static final String MYBATIS_MAPPER_CLASS_PKG = "com.mi.info.groupname.demo.dal.com.mickey.tech.orm.mapper";
 
     /**
      * 数据库配置的前缀
