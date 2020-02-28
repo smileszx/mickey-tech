@@ -23,7 +23,7 @@
     <!-- %C.%M:%line 分别是：文件名.方法名:行号 -->
     <!-- %msg%n 具体的消息内容和换行 -->
     <property name="LOG_PATTERN"
-              value="%d{UTF-8} [业务名] [%contextName] [%level] [%thread] [%X{requestId}] [%C.%M:%line] - %msg%n"/>
+              value="%d{UTF-8} [mickey-tech-server] [%contextName] [%level] [%thread] [%X{requestId}] [%C.%M:%line] - %msg%n"/>
 
     <!-- 标准配置,只打印到控制台，在dev或者local环境中可以使用 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
