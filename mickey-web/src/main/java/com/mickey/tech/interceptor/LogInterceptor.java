@@ -1,4 +1,4 @@
-package com.mickey.tech.web.interceptor;
+package com.mickey.tech.interceptor;
 
 import com.mickey.tech.common.core.annotation.SpringHandlerInterceptor;
 import lombok.extern.slf4j.Slf4j;

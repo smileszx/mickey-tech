@@ -1,13 +1,14 @@
-package com.mickey.tech.web.controller;
+package com.mickey.tech.controller;
 
 import com.mickey.tech.common.core.util.CommonResult;
-import com.mickey.tech.web.vo.SwaggerVO;
+import com.mickey.tech.orm.entity.User;
+import com.mickey.tech.service.TestService;
+import com.mickey.tech.vo.SwaggerVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,24 +20,25 @@ import javax.validation.Valid;
  **/
 @Slf4j
 @RestController
-@RequestMapping("/swagger")
+@RequestMapping("/restful")
 @Api(tags="Swagger测试API")
 public class SwaggerController {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(SwaggerController.class);
+    @Autowired
+    private TestService testService;
 
-    @ApiOperation(value="问候世界")
-    @GetMapping("/hi/{msg}")
-    @ApiImplicitParam(name="msg",value="问候信息",required=true)
-    public CommonResult sayHello (@Valid @PathVariable("msg") String msg) {
-        LOGGER.info("hello, {}", msg);
-        return CommonResult.success(msg);
+    @ApiOperation(value="查询用户值")
+    @GetMapping("/user/{id}")
+    @ApiImplicitParam(name="id",value="用户id",required=true)
+    public CommonResult sayHello (@Valid @PathVariable("id") Long id) {
+        User user = testService.findUserById(id);
+        log.info(user.toString());
+        return CommonResult.success(user);
     }
 
     @ApiOperation(value = "参数测试")
     @PostMapping("/param")
     public CommonResult testParam (@Valid @RequestBody SwaggerVO swaggerVO) {
-        LOGGER.info("参数: {}", swaggerVO);
         return CommonResult.success(swaggerVO);
     }
 

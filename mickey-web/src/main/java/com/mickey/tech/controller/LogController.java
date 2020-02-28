@@ -1,4 +1,4 @@
-package com.mickey.tech.web.controller;
+package com.mickey.tech.controller;
 
 import com.mickey.tech.common.core.util.CommonResult;
 import io.swagger.annotations.Api;

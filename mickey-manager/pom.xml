@@ -11,5 +11,11 @@
 
     <artifactId>mickey-manager</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.mickey.tech</groupId>
+            <artifactId>mickey-orm</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

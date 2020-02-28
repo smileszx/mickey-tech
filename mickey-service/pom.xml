@@ -15,7 +15,6 @@
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>mickey-manager</artifactId>
-            <version>${mickey.tech.version}</version>
         </dependency>
     </dependencies>
 

@@ -20,6 +20,7 @@
             <property name="mappers"
                       value="tk.mybatis.mapper.common.Mapper" />
         </plugin>
+
         <commentGenerator>
             <!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
             <!-- 如果生成日期，会造成即使修改一个字段，整个实体类所有属性都会发生变化，不利于版本控制，所以设置为true -->
@@ -27,6 +28,7 @@
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
+
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/bamboo"
@@ -39,17 +41,20 @@
         force the use of java.math.BigDecimal for DECIMAL and NUMERIC fields, -->
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
+
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator targetPackage="com.mickey.tech.orm.entity"
                             targetProject="${entity.target.dir}">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
+
         <!-- 生成映射文件的包名和位置，设置成和mapper接口同一个包底下，这样不会出现查找不到方法的错误 -->
         <sqlMapGenerator targetPackage="com.mickey.tech.orm.mapper"
                          targetProject="${dao.resources.dir}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
+
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.mickey.tech.orm.mapper"
@@ -58,7 +63,6 @@
         </javaClientGenerator>
 
         <!-- 生成表配置 -->
-
         <table tableName="user" domainObjectName="User"
                enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">

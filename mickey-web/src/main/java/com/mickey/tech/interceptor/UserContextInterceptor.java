@@ -1,4 +1,4 @@
-package com.mickey.tech.web.interceptor;
+package com.mickey.tech.interceptor;
 
 import cn.hutool.system.UserInfo;
 import com.mickey.tech.common.core.annotation.SpringHandlerInterceptor;
