@@ -63,7 +63,7 @@
         </javaClientGenerator>
 
         <!-- 生成表配置 -->
-        <table tableName="user" domainObjectName="User"
+        <table tableName="cms_help" domainObjectName="CmsHelp"
                enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
         </table>
