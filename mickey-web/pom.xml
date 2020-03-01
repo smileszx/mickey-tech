@@ -27,10 +27,6 @@
         </dependency>
         <dependency>
             <groupId>com.mickey.tech</groupId>
-            <artifactId>common-log</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mickey.tech</groupId>
             <artifactId>mickey-service</artifactId>
         </dependency>
     </dependencies>

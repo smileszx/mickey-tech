@@ -16,5 +16,13 @@
         <module>common-swagger</module>
         <module>common-core</module>
         <module>common-log</module>
+        <module>common-redis</module>
     </modules>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 </project>
