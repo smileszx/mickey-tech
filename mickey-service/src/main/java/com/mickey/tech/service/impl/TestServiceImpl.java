@@ -5,6 +5,7 @@ import com.mickey.tech.orm.entity.User;
 import com.mickey.tech.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author suzhengxiao
@@ -20,5 +21,16 @@ public class TestServiceImpl implements TestService {
     @Override
     public User findUserById(Long userId) {
         return testManager.selectById(userId);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Throwable.class)
+    public Integer insert(User user) throws Exception {
+
+        user.setAddress("杭州");
+        user.setUsername("阿里");
+        user.setVersion((long) 123456);
+        testManager.insert(user);
+        throw new Exception();
     }
 }

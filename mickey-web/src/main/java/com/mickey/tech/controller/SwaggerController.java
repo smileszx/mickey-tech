@@ -42,4 +42,10 @@ public class SwaggerController {
         return CommonResult.success(swaggerVO);
     }
 
+    @ApiOperation(value = "测试事务")
+    @GetMapping("/tx")
+    public CommonResult testTransaction () throws Exception {
+        testService.insert(new User());
+        return CommonResult.error();
+    }
 }

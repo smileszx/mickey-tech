@@ -10,4 +10,6 @@ import com.mickey.tech.orm.entity.User;
 public interface TestManager {
 
     User selectById (Long id);
+
+    Integer insert (User user);
 }

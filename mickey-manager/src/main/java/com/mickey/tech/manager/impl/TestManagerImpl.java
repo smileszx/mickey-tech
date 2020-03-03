@@ -21,4 +21,9 @@ public class TestManagerImpl implements TestManager {
     public User selectById(Long id) {
         return userMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public Integer insert(User user) {
+        return userMapper.insert(user);
+    }
 }

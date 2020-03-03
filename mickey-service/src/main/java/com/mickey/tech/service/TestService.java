@@ -9,4 +9,6 @@ import com.mickey.tech.orm.entity.User;
 public interface TestService {
 
     User findUserById (Long userId);
+
+    Integer insert (User user) throws Exception;
 }
