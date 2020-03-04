@@ -37,6 +37,7 @@
         <swagger-bootstrap.version>1.9.6</swagger-bootstrap.version>
         <junit.version>4.12</junit.version>
         <redisson.version>3.11.6</redisson.version>
+        <cas-client.version>3.6.1</cas-client.version>
     </properties>
     <!-- 公共依赖 -->
     <dependencies>
@@ -96,6 +97,11 @@
             <dependency>
                 <groupId>com.mickey.tech</groupId>
                 <artifactId>common-redis</artifactId>
+                <version>${mickey.tech.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mickey.tech</groupId>
+                <artifactId>common-cas</artifactId>
                 <version>${mickey.tech.version}</version>
             </dependency>
             <dependency>
@@ -195,6 +201,12 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+            <!-- CAS Client -->
+            <dependency>
+                <groupId>org.jasig.cas.client</groupId>
+                <artifactId>cas-client-core</artifactId>
+                <version>${cas-client.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
