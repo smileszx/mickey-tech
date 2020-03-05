@@ -21,7 +21,7 @@ import java.util.Map;
  * @description: 配置类
  * @date: 2020/3/4
  */
-@Configuration
+//@Configuration
 @EnableConfigurationProperties(CasClientProperties.class)
 public class CasClientConfiguration {
 

@@ -1,9 +1,21 @@
 spring:
+  # jdbc_config   datasource
   datasource:
-    url: jdbc:mysql://localhost:3306/bamboo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/bamboo?useUnicode=true&characterEncoding=UTF-8&&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
+    # Hikari will use the above plus the following to setup connection pooling
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 10
+      auto-commit: true
+      idle-timeout: 600000
+      pool-name: BambooHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
@@ -28,9 +40,9 @@ spring:
 #        max-active: 20
 #        # 关闭超时时间ms
 #        shutdown-timeout: 1000
-cas:
-  server-url-prefix: https://example.com/cas
-  server-login-url: https://example.com/cas/login
-  client-host-url: http://localhost:8080
-  ignore-pattern: /**,/x5
-  ignore-url-pattern-type: /**,/x5
+#cas:
+#  server-url-prefix: https://example.com/cas
+#  server-login-url: https://example.com/cas/login
+#  client-host-url: http://localhost:8080
+#  ignore-pattern: /**,/x5
+#  ignore-url-pattern-type: /**,/x5

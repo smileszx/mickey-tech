@@ -3,6 +3,7 @@ server:
 spring:
   profiles:
     active: dev
+# Swagger API 文档
 swagger:
   enabled: true
   title: Spring Boot中使用Swagger2构建RESTful APIS
@@ -12,5 +13,19 @@ swagger:
   contact:
     name: suzhengxiao
     url: https://www.mioffice.cn
-    email: suzhengxiao@xiaomi.com
+    email: smile.szx@outlook.com
   headTokenDescription: 令牌
+info:
+  app:
+    name: spring-boot-actuator
+    version: 1.0.0
+    test: test
+# Actuator 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
