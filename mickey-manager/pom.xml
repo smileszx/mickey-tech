@@ -15,10 +15,12 @@
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>mickey-orm</artifactId>
+            <version>${mickey.tech.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>common-redis</artifactId>
+            <version>${mickey.tech.version}</version>
         </dependency>
     </dependencies>
 </project>

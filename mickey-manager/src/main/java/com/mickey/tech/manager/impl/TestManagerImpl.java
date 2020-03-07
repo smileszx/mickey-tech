@@ -4,13 +4,13 @@ import com.mickey.tech.manager.TestManager;
 import com.mickey.tech.orm.entity.User;
 import com.mickey.tech.orm.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * @author suzhengxiao
  * @date 2020/1/30 23:26
  **/
-@Service
+@Component
 public class TestManagerImpl implements TestManager {
 
     @Autowired

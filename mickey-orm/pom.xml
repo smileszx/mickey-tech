@@ -23,6 +23,7 @@
         <dependency>
             <groupId>com.mickey.tech</groupId>
             <artifactId>common-core</artifactId>
+            <version>${mickey.tech.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

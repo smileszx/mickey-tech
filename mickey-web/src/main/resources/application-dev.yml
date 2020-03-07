@@ -16,30 +16,30 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    # 创建连接超时时间ms
-#    timeout: 5000
-#    password:
-#    redisson:
-#      # 配置单节点模式
-#      config: classpath:redis-config-dev.yml
-#      test-while-idle: true
-#      test-on-borrow: false
-#      test-on-return: false
-#    lettuce:
-#      pool:
-#        # 最小空闲的连接
-#        min-idle: 10
-#        # 最大空闲的连接
-#        max-idle: 10
-#        # 最长等待时间ms
-#        max-wait: 10000
-#        # 最大活动连接数
-#        max-active: 20
-#        # 关闭超时时间ms
-#        shutdown-timeout: 1000
+  redis:
+    host: mickey.tech.com
+    port: 6379
+    # 创建连接超时时间ms
+    timeout: 5000
+    password:
+    redisson:
+      # 配置单节点模式
+      config: classpath:redis-config-dev.yml
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+    lettuce:
+      pool:
+        # 最小空闲的连接
+        min-idle: 10
+        # 最大空闲的连接
+        max-idle: 10
+        # 最长等待时间ms
+        max-wait: 10000
+        # 最大活动连接数
+        max-active: 20
+        # 关闭超时时间ms
+        shutdown-timeout: 1000
 #cas:
 #  server-url-prefix: https://example.com/cas
 #  server-login-url: https://example.com/cas/login
