@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -30,6 +31,7 @@ public class SwaggerVO {
 
     @ApiModelProperty(value="名称",dataType="String",name="name",example="xiaomi")
     @NotBlank(message = "名称不能为空")
+    @Email
     String name;
 
 }

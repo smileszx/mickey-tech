@@ -4,13 +4,16 @@ import com.mickey.tech.common.core.util.CommonResult;
 import com.mickey.tech.orm.entity.User;
 import com.mickey.tech.service.TestService;
 import com.mickey.tech.vo.SwaggerVO;
+import com.mickey.tech.vo.UserInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 /**
@@ -47,5 +50,13 @@ public class SwaggerController {
     public CommonResult testTransaction () throws Exception {
         testService.insert(new User());
         return CommonResult.error();
+    }
+
+    @ApiOperation(value = "参数测试")
+    @PostMapping("/user")
+    public CommonResult testParam (@Valid @RequestBody UserInfoVO userInfoVO) throws Exception{
+        int i =1/0;
+        System.out.println(i);
+        return CommonResult.success(userInfoVO);
     }
 }
