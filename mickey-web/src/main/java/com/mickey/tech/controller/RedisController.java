@@ -6,11 +6,14 @@ import com.mickey.tech.service.RedisService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Redis 测试
@@ -31,5 +34,18 @@ public class RedisController {
     public CommonResult testRedis () throws Exception {
         String result = redisService.test("alibaba", "阿里巴巴");
         return CommonResult.success(result);
+    }
+
+
+    @ApiOperation(value = "测试Redis 加锁")
+    @GetMapping("/lock")
+    public CommonResult testRedisLock () throws Exception {
+        RLock lock = redisService.lock("redislock", TimeUnit.SECONDS, 60);
+        Thread thread = new Thread(() -> {
+            redisService.lock("redislock", TimeUnit.SECONDS, 60);
+        });
+        thread.start();
+        log.info("{} hold the lock, lock name is {}, remain time {}", Thread.currentThread().getName(), lock.getName(), lock.remainTimeToLive());
+        return CommonResult.success(lock.remainTimeToLive());
     }
 }
