@@ -34,6 +34,11 @@
         </dependency>
         <dependency>
             <groupId>com.mickey.tech</groupId>
+            <artifactId>common-websocket</artifactId>
+            <version>${mickey.tech.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mickey.tech</groupId>
             <artifactId>mickey-service</artifactId>
             <version>${mickey.tech.version}</version>
         </dependency>

@@ -18,6 +18,7 @@
         <module>common-log</module>
         <module>common-redis</module>
         <module>common-cas</module>
+        <module>common-websocket</module>
     </modules>
     <dependencies>
     </dependencies>
