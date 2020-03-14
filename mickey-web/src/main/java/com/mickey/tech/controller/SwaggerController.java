@@ -13,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * Swagger文档生成测试
@@ -33,7 +36,12 @@ public class SwaggerController {
     @ApiOperation(value="查询用户值")
     @GetMapping("/user/{id}")
     @ApiImplicitParam(name="id",value="用户id",required=true)
-    public CommonResult sayHello (@Valid @PathVariable("id") Long id) {
+    public CommonResult sayHello (@Valid @PathVariable("id") Long id, HttpServletRequest request) {
+        if (Objects.nonNull(request.getSession())) {
+            request.getSession().setAttribute("username", "mickey");
+            request.getSession().setAttribute("password", "fhaifuahgasdjaiwuefhqwesdfkjah");
+            log.info("Session Id : {}", request.getSession().getId());
+        }
         User user = testService.findUserById(id);
         log.info(user.toString());
         return CommonResult.success(user);

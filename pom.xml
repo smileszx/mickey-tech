@@ -41,6 +41,7 @@
         <prometheus.version>1.3.5</prometheus.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <commons-pool2.version>2.8.0</commons-pool2.version>
+        <ttl.version>2.11.4</ttl.version>
     </properties>
     <!-- 公共依赖 -->
     <dependencies>
@@ -204,6 +205,12 @@
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-registry-prometheus</artifactId>
                 <version>${prometheus.version}</version>
+            </dependency>
+            <!-- 线程池线程ThreadLocal传值问题 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${ttl.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -10,7 +10,6 @@ public class CommonTest {
 
     @Test
     public void testStringLength () {
-        String s = "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
-        System.out.println(s.length());
+        
     }
 }

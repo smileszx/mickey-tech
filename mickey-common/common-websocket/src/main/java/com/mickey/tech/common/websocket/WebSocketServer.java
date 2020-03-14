@@ -1,19 +1,19 @@
 package com.mickey.tech.common.websocket;
 
+import com.mickey.tech.common.core.util.ThreadLocalUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.websocket.*;
-import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@ServerEndpoint("/websocket/mickey")
+// https://www.js.com/p/2c9be4641d43
+@ServerEndpoint("/websocket/asset")
 @Component
 @Slf4j
 public class WebSocketServer {
@@ -34,7 +34,11 @@ public class WebSocketServer {
     @OnOpen
     public void onOpen(Session session) {
         sessionSet.add(session);
+        log.info("=========>>>>>>>>>>>>ThreadLocal set-----, current: {}", Thread.currentThread().getName());
 
+//        ThreadLocalUtil.setContext(session.getId(), session);
+//        Map<String, Object> threadLocal = ThreadLocalUtil.getContextTreadLocal();
+//        log.info("=========>>>>>>>>>>>>ThreadLocal session: {}", threadLocal.get(session.getId()));
         int count = ONLINE_COUNT.incrementAndGet();
         log.info("新连接创建成功，当前连接数: {}", count);
 
@@ -59,7 +63,7 @@ public class WebSocketServer {
      */
     @OnError
     public void onError(Session session, Throwable throwable) {
-        log.error("发生异常: {}, Session ID: {}", throwable.getMessage(), session.getId());
+        log.error("发生异常: {}, Session ID: {}", throwable.getMessage(), session.getId(), throwable);
     }
 
     @OnClose
@@ -67,6 +71,8 @@ public class WebSocketServer {
 
         sessionSet.remove(session);
         int count = ONLINE_COUNT.decrementAndGet();
+
+        log.info("发现有连接关闭，当前连接数为：{}", count);
     }
 
     /**
@@ -101,7 +107,7 @@ public class WebSocketServer {
      * @param message
      * @throws IOException
      */
-    public static void SendMessage(String message,String sessionId) throws IOException {
+    public static void SendMessage(String message, String sessionId) throws IOException {
         Session session = null;
         for (Session s : sessionSet) {
             if(s.getId().equals(sessionId)){

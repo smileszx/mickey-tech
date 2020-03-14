@@ -13,6 +13,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.mickey.tech</groupId>
+            <artifactId>common-core</artifactId>
+            <version>${mickey.tech.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>

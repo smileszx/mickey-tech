@@ -1,5 +1,7 @@
 package com.mickey.tech.common.core.util;
 
+import com.alibaba.ttl.TransmittableThreadLocal;
+
 import java.util.*;
 
 /**
@@ -13,6 +15,7 @@ public final class ThreadLocalUtil {
      */
     private static final ThreadLocal<Map<String, Object>> threadLocal = ThreadLocal.withInitial(() -> new HashMap<>(16));
 
+    private static final TransmittableThreadLocal<Map<String, Object>> context = new TransmittableThreadLocal<>();
     /**
      * 获取ThreadLocal值
      * @return
@@ -131,5 +134,37 @@ public final class ThreadLocalUtil {
      */
     public static void remove() {
         threadLocal.remove();
+    }
+
+
+
+
+    /**
+     * 获取ThreadLocal值
+     * @return
+     */
+    public static Map<String, Object> getContextTreadLocal() {
+        return context.get();
+    }
+
+    /**
+     * 根据key值获取ThreadLocal中Map的value
+     * @param key
+     * @param <T>
+     * @return
+     */
+    public static <T> T getContext(String key) {
+        Map map = context.get();
+        return (T)map.get(key);
+    }
+
+    /**
+     * ThreadLocal中的Map赋值key-value
+     * @param key
+     * @param value
+     */
+    public static void setContext(String key, Object value) {
+        Map map = context.get();
+        map.put(key, value);
     }
 }

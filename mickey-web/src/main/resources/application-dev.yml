@@ -1,4 +1,13 @@
 spring:
+  session:
+    redis:
+      # Sessions flush mode.
+      flush-mode: on_save
+      # Namespace for keys used to store sessions.
+      namespace: spring:session
+    # Session store type.
+    store-type: redis
+    timeout: 60
   # jdbc_config   datasource
   datasource:
     url: jdbc:mysql://localhost:3306/bamboo?useUnicode=true&characterEncoding=UTF-8&&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false

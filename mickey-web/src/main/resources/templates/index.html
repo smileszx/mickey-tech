@@ -3,49 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        h3,h4{
+            text-align:center;
+        }
+    </style>
     <script type="text/javascript">
-        function WebSocketTest()
-        {
-            if ("WebSocket" in window)
-            {
-                alert("您的浏览器支持 WebSocket!");
+        var socket;
+        if (typeof (WebSocket) == "undefined") {
+            console.log("遗憾：您的浏览器不支持WebSocket");
+        } else {
+            console.log("恭喜：您的浏览器支持WebSocket");
 
-                // 打开一个 web socket
-                var ws = new WebSocket("ws://localhost:9998/echo");
+            //实现化WebSocket对象
+            //指定要连接的服务器地址与端口建立连接
+            //注意ws、wss使用不同的端口。我使用自签名的证书测试，
+            //无法使用wss，浏览器打开WebSocket时报错
+            //ws对应http、wss对应https。
+            socket = new WebSocket("ws://localhost:9999/websocket/asset");
+            //连接打开事件
+            socket.onopen = function() {
+                console.log("Socket 已打开");
+                socket.send("消息发送测试(From Client)");
+            };
+            //收到消息事件
+            socket.onmessage = function(msg) {
+                console.log(msg.data);
+            };
 
-                ws.onopen = function()
-                {
-                    // Web Socket 已连接上，使用 send() 方法发送数据
-                    ws.send("发送数据");
-                    alert("数据发送中...");
-                };
-
-                ws.onmessage = function (evt)
-                {
-                    var received_msg = evt.data;
-                    alert("数据已接收...");
-                };
-
-                ws.onclose = function()
-                {
-                    // 关闭 websocket
-                    alert("连接已关闭...");
-                };
+            //连接关闭事件
+            socket.onclose = function() {
+                console.log("Socket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function() {
+                alert("Socket发生了错误");
             }
 
-            else
-            {
-                // 浏览器不支持 WebSocket
-                alert("您的浏览器不支持 WebSocket!");
-            }
+            //窗口关闭时，关闭连接
+            window.unload = function() {
+                socket.close();
+            };
         }
     </script>
     <title>首页</title>
 </head>
 <body>
 <p><span th:text="${title}"/> </p>
-<div id="sse">
-    <a href="javascript:WebSocketTest()">运行 WebSocket</a>
-</div>
+<h3>WebSocket测试，在<span style="color:red">控制台</span>查看测试信息输出！</h3>
+<h4>
+    [url=/api/ws/sendOne?message=单发消息内容&id=none]单发消息链接[/url]
+    [url=/api/ws/sendAll?message=群发消息内容]群发消息链接[/url]
+</h4>
 </body>
 </html>
