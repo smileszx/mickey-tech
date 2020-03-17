@@ -63,6 +63,7 @@ __pycache__/
 *.ipr
 *.iws
 logs
+*/target/
 
 # logs and trace
 *.log
