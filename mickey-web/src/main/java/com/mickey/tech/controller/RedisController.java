@@ -1,4 +1,4 @@
-package com.mickey.tech.controller;
+ package com.mickey.tech.controller;
 
 import com.mickey.tech.common.core.util.CommonResult;
 import com.mickey.tech.orm.entity.User;
@@ -35,7 +35,6 @@ public class RedisController {
         String result = redisService.test("alibaba", "阿里巴巴");
         return CommonResult.success(result);
     }
-
 
     @ApiOperation(value = "测试Redis 加锁")
     @GetMapping("/lock")

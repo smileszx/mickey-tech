@@ -10,10 +10,10 @@ spring:
     timeout: 60
   # jdbc_config   datasource
   datasource:
-    url: jdbc:mysql://localhost:3306/bamboo?useUnicode=true&characterEncoding=UTF-8&&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/sys?useUnicode=true&characterEncoding=UTF-8&&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
+    password: SZXszx@123321
     # Hikari will use the above plus the following to setup connection pooling
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
