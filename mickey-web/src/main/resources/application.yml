@@ -3,6 +3,12 @@ server:
 spring:
   profiles:
     active: dev
+  messages:
+    # 相对路径 开头请勿添加斜杠
+    basename: static/i18n/messages
+  thymeleaf:
+    cache: false #关闭页面缓存
+    prefix: classpath:/views/ #页面拼接路径
 # Swagger API 文档
 swagger:
   enabled: true

@@ -1,9 +1,13 @@
 package com.mickey.tech.test;
 
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
+import cn.hutool.crypto.digest.MD5;
 import com.mickey.tech.task.SyncTask;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -25,5 +29,20 @@ public class CommonTest {
         syncTask2.testNonStaticCount();
         AtomicLong nonAtomicLong = syncTask.testNonStaticCount();
         log.info("类非静态变量: {}", nonAtomicLong);
+    }
+
+    @Test
+    public void testLanguage () {
+        Locale english = Locale.ENGLISH;
+        Locale cn = Locale.CHINESE;
+
+    }
+
+    @Test
+    public void testMD5 () {
+        String testStr = "test中文";
+        Digester md5 = new Digester(DigestAlgorithm.MD5);
+        String digestHex = md5.digestHex(testStr);//5393554e94bf0eb6436f240a4fd71282
+        log.info("Str:{}, MD5:{}", testStr, digestHex);
     }
 }
