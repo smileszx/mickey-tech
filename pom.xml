@@ -26,7 +26,7 @@
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <swagger.version>2.9.2</swagger.version>
         <lombok.version>1.18.8</lombok.version>
-        <mysql.version>5.1.42</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <druid.version>1.1.10</druid.version>
         <mybatis-starter.version>2.0.0</mybatis-starter.version>
         <tk.mybatis.version>2.1.5</tk.mybatis.version>
